@@ -1,7 +1,7 @@
 # dockerhub
+> docker는 dockerhub를 제공하여 IMAGE를 쉽게 업/다운로드 할 수 있으며 공유할 수 있음!
 
-### docker는 dockerhub를 제공하여 IMAGE를 쉽게 업/다운로드 할 수 있으며 공유할 수 있음!
-
+## dockerhub사용법
 
 1. shell에서 dockerhub에 로그인
 ```bash
