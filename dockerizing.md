@@ -41,6 +41,34 @@ build 후 해당 이미지를 run할 때 실행되는 명령어이기 때문에 
 *`ENTRYPOINT` 명령어와는 조금 다른데, 그건 나중에 포스팅하게씀*
 
 
+### 친절하게 예시를 첨부해드리겠다.
+- for deploying django at 8000
+
+```dockerfile
+FROM python:3.6
+# python 3.6 이미지를 환경으로 사용하기 위해 가져옴
+
+RUN apt-get update \ 
+	&& apt-get install -y --no-install-recommends \
+		postgresql-client \
+	&& rm -rf /var/lib/apt/lists/*
+
+COPY . /app
+# 나의 Django 코드를 컨테이너에 복사합니다.
+
+RUN pip install -r /app/LittleAchievement/requirements.txt  
+# requirements.txt에 적혀있는 pip 패키지들을 설치합니다.
+
+EXPOSE 80
+EXPOSE 8000  
+# 80, 8000번 포트를 expose합니다.
+
+WORKDIR /app/LittleAchievement/
+# 요놈은 CMD 관련 워킹디렉토리 지정
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+```
+
 
 ## image build 하기
 ```bash
